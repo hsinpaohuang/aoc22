@@ -1,40 +1,34 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
 	"log"
-	"os"
 	"strconv"
+
+	"github.com/hsinpaohuang/aoc22/utils"
 )
 
 func main() {
-	file, err := os.Open("./input/day1/input.txt")
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer file.Close()
-
 	max := 0
 	current := 0
 
-	scanner := bufio.NewScanner(file)
-	for scanner.Scan() {
-		line := scanner.Text()
+	filepath := "./input/day1/input.txt"
+	callback := func(line string) {
 		if line == "" {
 			if max < current {
 				max = current
 			}
 			current = 0
 		} else {
-			new, _ := strconv.Atoi(line)
+			new, err := strconv.Atoi(line)
+			if err != nil {
+				log.Fatal(err)
+			}
 			current += new
 		}
 	}
 
-	fmt.Println(max)
+	utils.Readline(filepath, callback)
 
-	if err := scanner.Err(); err != nil {
-		log.Fatal(err)
-	}
+	fmt.Println(max)
 }
