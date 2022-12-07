@@ -2,14 +2,13 @@ package utils
 
 import (
 	"bufio"
-	"log"
 	"os"
 )
 
 func Readline(file_path string, callback func(line string)) {
 	file, err := os.Open(file_path)
 	if err != nil {
-		log.Fatal(err)
+		panic(err)
 	}
 	defer file.Close()
 
@@ -20,6 +19,6 @@ func Readline(file_path string, callback func(line string)) {
 	}
 
 	if err := scanner.Err(); err != nil {
-		log.Fatal(err)
+		panic(err)
 	}
 }
