@@ -1,5 +1,5 @@
 # Advent of Code 2022 in Go
-My solutions to Advent of Coding 2022, written in Go
+My solutions to [Advent of Code 2022](https://adventofcode.com/2022), written in Go
 
 ## Run a day
 ```bash
